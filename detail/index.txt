@@ -1,0 +1,37 @@
+Explication du code PHP de routeur :
+
+1. **Récupération des paramètres de l'URL :**
+   - Le code récupère le paramètre 'execution' de la requête GET (probablement depuis l'URL) et le stocke
+   dans la variable $action. Si le paramètre n'est pas défini, $action est initialisé à une chaîne vide.
+
+2. **Division de l'action en segments :**
+   - La variable $tab est créée en divisant la chaîne $action en segments à l'aide de la fonction explode()
+   avec le délimiteur '/'. Cela permet de créer un tableau $tab contenant les différents segments extraits
+   de l'URL.
+
+3. **Initialisation des variables :**
+   - Les variables $controller, $fonction, et $arg sont initialisées à partir des segments extraits de l'URL.
+   Si un segment n'est pas défini, une valeur par défaut est utilisée (par exemple, 'default' pour $controller
+   et 'index' pour $fonction).
+
+4. **Validation des segments d'URL pour des raisons de sécurité :**
+   - Les segments $controller et $fonction sont soumis à une validation à l'aide de la fonction preg_replace()
+   avec une expression régulière. Cela ne laisse que les caractères alphanumériques et soulignés, améliorant
+   la sécurité en évitant les attaques d'injection de code.
+
+5. **Inclusion du fichier de contrôleur :**
+   - La variable $controllerFile est formée en ajoutant le chemin vers le fichier de contrôleur à partir du
+   répertoire 'controller'. Ensuite, le code vérifie si le fichier existe avec file_exists() et l'inclut avec
+   require_once. Si le fichier n'est pas trouvé, le script se termine avec un message d'erreur.
+
+6. **Vérification de l'existence de la fonction :**
+   - Le code vérifie si la fonction spécifiée ($fonction) existe avec function_exists(). Si la fonction n'existe
+   pas, le script se termine avec un message d'erreur.
+
+7. **Appel de la fonction avec ou sans argument :**
+   - En fonction de la présence ou de l'absence de l'argument $arg, la fonction spécifiée ($fonction) est appelée
+   avec ou sans argument. Cela permet de traiter les requêtes avec des paramètres dynamiques.
+
+Ce script agit comme un routeur, analysant les paramètres de l'URL, incluant le fichier de contrôleur correspondant,
+vérifiant l'existence de la fonction appelée, et enfin, exécutant cette fonction avec ou sans argument en fonction
+des paramètres de l'URL.

@@ -1,0 +1,32 @@
+Ce code PHP vise à établir une connexion à une base de données MySQL en utilisant l'extension PDO
+(PHP Data Objects). Voici une explication de chaque partie du code :
+
+1. **Paramètres de connexion :**
+   - `$dbhost`: Spécifie l'hôte de la base de données (127.0.0.1 pour localhost).
+   - `$dbname`: Spécifie le nom de la base de données à laquelle se connecter (cinema).
+   - `$dbcharset`: Spécifie le jeu de caractères à utiliser (UTF8).
+   - `$dbuser`: Spécifie le nom d'utilisateur de la base de données (root).
+   - `$password`: Spécifie le mot de passe de la base de données (une chaîne vide ici, ce qui peut
+   être un problème de sécurité).
+
+2. **Tentative de connexion à la base de données :**
+   - Une instance PDO est créée avec les paramètres de connexion spécifiés. La connexion est tentée
+   dans un bloc try-catch pour gérer les exceptions.
+
+   - Si la connexion échoue, une exception de type PDOException est capturée, et le message d'erreur
+   associé est affiché avec `echo 'Erreur de connexion : ' . $e->getMessage();`.
+
+   - Si la connexion réussit, aucune action particulière n'est entreprise ici, mais vous pouvez
+   étendre le bloc try pour inclure des opérations supplémentaires liées à la base de données.
+
+3. **Commentaires explicatifs :**
+   - Des commentaires ont été ajoutés pour chaque section du code, améliorant la lisibilité et aidant
+   les développeurs à comprendre rapidement le but de chaque partie.
+
+4. **Note sur la sécurité :**
+   - Bien que ce code soit fonctionnel, stocker un mot de passe en dur dans le code source n'est pas
+   une bonne pratique de sécurité. En production, il est recommandé d'utiliser des méthodes plus
+   sécurisées pour stocker les informations d'identification, comme des variables d'environnement.
+
+Ce fichier vise à fournir une compréhension globale du code de connexion à la base de données en
+mettant en évidence ses différentes composantes.
